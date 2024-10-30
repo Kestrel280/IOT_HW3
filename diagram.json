@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "widyawardana adiprawita",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -4.9, "left": -129.8, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -169.37, "left": -176, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -24.85,
+      "left": 0,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -153.3, "left": -274.2, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:VIN", "lcd1:VDD", "red", [ "h-19.2" ] ],
+    [ "esp:GND.2", "lcd1:VSS", "black", [ "h-19.2", "v-0.1" ] ],
+    [ "lcd1:RW", "esp:GND.2", "black", [ "v9.6", "h-38.5", "v172.8" ] ],
+    [ "esp:D32", "lcd1:D4", "violet", [ "h-48", "v-86.5", "h124.8" ] ],
+    [ "esp:D33", "lcd1:D5", "violet", [ "h-57.6", "v-96", "h144" ] ],
+    [ "lcd1:D6", "esp:D25", "violet", [ "v19.2", "h-163", "v105.6" ] ],
+    [ "esp:D26", "lcd1:D7", "violet", [ "h-76.8", "v-115.3", "h182.4" ] ],
+    [ "lcd1:A", "r1:1", "red", [ "v19.2", "h-0.1" ] ],
+    [ "r1:2", "esp:VIN", "red", [ "v9.6", "h-193.2", "v153.6" ] ],
+    [ "lcd1:K", "esp:GND.2", "black", [ "v9.6", "h-144", "v172.8" ] ],
+    [ "lcd1:RS", "esp:D27", "violet", [ "v19.2", "h-47.7", "v124.8" ] ],
+    [ "esp:D14", "lcd1:E", "violet", [ "h-28.8", "v-134.3", "h57.6" ] ],
+    [ "dht1:VCC", "esp:VIN", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "dht1:SDA", "esp:D12", "blue", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
